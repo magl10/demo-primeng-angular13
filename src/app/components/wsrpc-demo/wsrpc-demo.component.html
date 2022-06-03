@@ -1,0 +1,25 @@
+<div>
+
+  <p-button label="Listar Usuarios" (click)="obtenerListaDeUsuario()"></p-button>
+
+</div>
+
+<div>
+  <p-table responsiveLayout="scroll" [value]="tableObjects" >
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let header of tableHeaders">{{header}}</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.age}}</td>
+        <td>{{user.sex}}</td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+</div>

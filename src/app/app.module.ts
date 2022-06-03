@@ -12,21 +12,25 @@ import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 
 import {MessageService} from 'primeng/api';
+import { WsrpcDemoComponent } from './components/wsrpc-demo/wsrpc-demo.component';
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EjemploProgressbarComponent
+    EjemploProgressbarComponent,
+    WsrpcDemoComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    ButtonModule,
-    ProgressBarModule,
-    ToastModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        ButtonModule,
+        ProgressBarModule,
+        ToastModule,
+        TableModule
+    ],
   providers: [
     MessageService
   ],
