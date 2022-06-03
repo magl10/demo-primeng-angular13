@@ -1,0 +1,23 @@
+#parent {
+  font-size: 0.75em;
+  border: 1px solid #304562;
+  border-radius: 3px;
+  min-width: 200px;
+  h5 {
+    margin: 0;
+    text-align: center;
+    background-color: black;
+  }
+}
+
+p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.code-monospaced-text {
+  font-family: monospace;
+  border-radius: 3px;
+  background-color: black;
+  border: 2px solid black;
+}

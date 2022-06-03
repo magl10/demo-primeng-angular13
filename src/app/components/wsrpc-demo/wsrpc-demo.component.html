@@ -1,7 +1,35 @@
-<div>
+<p-toast></p-toast>
 
-  <p-button label="Listar Usuarios" (click)="obtenerListaDeUsuario()"></p-button>
+<div class="mb-2">
+  <app-websocket-rpc-stats #statsComponent></app-websocket-rpc-stats>
+</div>
 
+<div class="mb-2">
+  <span class="p-buttonset">
+    <p-button label="Listar Usuarios" (click)="obtenerListaDeUsuario()"></p-button>
+    <p-button label="Recibir Ubicaciones" (click)="recibirUbicaciones()"></p-button>
+  </span>
+</div>
+
+<div class="mb-2">
+  <div class="mb-2">
+    <input type="text" pInputText placeholder="Nombre" [(ngModel)]="nombre" />
+  </div>
+  <div class="mb-2">
+    <input type="text" pInputText placeholder="Nickname" [(ngModel)]="nickname"/>
+  </div>
+  <div class="mb-2">
+    <input type="text" pInputText placeholder="Dirección" [(ngModel)]="direccion"/>
+  </div>
+  <div class="mb-2">
+    <input type="text" pInputText placeholder="Edad" [(ngModel)]="edad"/>
+  </div>
+  <div class="mb-2">
+    <input type="text" pInputText placeholder="Sexo" [(ngModel)]="sexo" />
+  </div>
+  <div class="mb-2">
+    <p-button label="Crear Usuario" (click)="crearUsuario()"></p-button>
+  </div>
 </div>
 
 <div>
@@ -15,6 +43,7 @@
 
     <ng-template pTemplate="body" let-user>
       <tr>
+        <td>{{user.id}}</td>
         <td>{{user.name}}</td>
         <td>{{user.age}}</td>
         <td>{{user.sex}}</td>

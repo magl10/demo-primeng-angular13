@@ -1256,3 +1256,294 @@ export module ListUsersResponse {
     users?: UserRs.AsProtobufJSON[] | null;
   }
 }
+
+/**
+ * Message implementation for user.GetPositionDriverRq
+ */
+export class GetPositionDriverRq implements GrpcMessage {
+  static id = 'user.GetPositionDriverRq';
+
+  /**
+   * Deserialize binary data to message
+   * @param instance message instance
+   */
+  static deserializeBinary(bytes: ByteSource) {
+    const instance = new GetPositionDriverRq();
+    GetPositionDriverRq.deserializeBinaryFromReader(
+      instance,
+      new BinaryReader(bytes)
+    );
+    return instance;
+  }
+
+  /**
+   * Check all the properties and set default protobuf values if necessary
+   * @param _instance message instance
+   */
+  static refineValues(_instance: GetPositionDriverRq) {
+    _instance.idDriver = _instance.idDriver || '';
+  }
+
+  /**
+   * Deserializes / reads binary message into message instance using provided binary reader
+   * @param _instance message instance
+   * @param _reader binary reader instance
+   */
+  static deserializeBinaryFromReader(
+    _instance: GetPositionDriverRq,
+    _reader: BinaryReader
+  ) {
+    while (_reader.nextField()) {
+      if (_reader.isEndGroup()) break;
+
+      switch (_reader.getFieldNumber()) {
+        case 1:
+          _instance.idDriver = _reader.readString();
+          break;
+        default:
+          _reader.skipField();
+      }
+    }
+
+    GetPositionDriverRq.refineValues(_instance);
+  }
+
+  /**
+   * Serializes a message to binary format using provided binary reader
+   * @param _instance message instance
+   * @param _writer binary writer instance
+   */
+  static serializeBinaryToWriter(
+    _instance: GetPositionDriverRq,
+    _writer: BinaryWriter
+  ) {
+    if (_instance.idDriver) {
+      _writer.writeString(1, _instance.idDriver);
+    }
+  }
+
+  private _idDriver?: string;
+
+  /**
+   * Message constructor. Initializes the properties and applies default Protobuf values if necessary
+   * @param _value initial values object or instance of GetPositionDriverRq to deeply clone from
+   */
+  constructor(_value?: RecursivePartial<GetPositionDriverRq.AsObject>) {
+    _value = _value || {};
+    this.idDriver = _value.idDriver;
+    GetPositionDriverRq.refineValues(this);
+  }
+  get idDriver(): string | undefined {
+    return this._idDriver;
+  }
+  set idDriver(value: string | undefined) {
+    this._idDriver = value;
+  }
+
+  /**
+   * Serialize message to binary data
+   * @param instance message instance
+   */
+  serializeBinary() {
+    const writer = new BinaryWriter();
+    GetPositionDriverRq.serializeBinaryToWriter(this, writer);
+    return writer.getResultBuffer();
+  }
+
+  /**
+   * Cast message to standard JavaScript object (all non-primitive values are deeply cloned)
+   */
+  toObject(): GetPositionDriverRq.AsObject {
+    return {
+      idDriver: this.idDriver
+    };
+  }
+
+  /**
+   * Convenience method to support JSON.stringify(message), replicates the structure of toObject()
+   */
+  toJSON() {
+    return this.toObject();
+  }
+
+  /**
+   * Cast message to JSON using protobuf JSON notation: https://developers.google.com/protocol-buffers/docs/proto3#json
+   * Attention: output differs from toObject() e.g. enums are represented as names and not as numbers, Timestamp is an ISO Date string format etc.
+   * If the message itself or some of descendant messages is google.protobuf.Any, you MUST provide a message pool as options. If not, the messagePool is not required
+   */
+  toProtobufJSON(
+    // @ts-ignore
+    options?: ToProtobufJSONOptions
+  ): GetPositionDriverRq.AsProtobufJSON {
+    return {
+      idDriver: this.idDriver
+    };
+  }
+}
+export module GetPositionDriverRq {
+  /**
+   * Standard JavaScript object representation for GetPositionDriverRq
+   */
+  export interface AsObject {
+    idDriver?: string;
+  }
+
+  /**
+   * Protobuf JSON representation for GetPositionDriverRq
+   */
+  export interface AsProtobufJSON {
+    idDriver?: string;
+  }
+}
+
+/**
+ * Message implementation for user.PositionRs
+ */
+export class PositionRs implements GrpcMessage {
+  static id = 'user.PositionRs';
+
+  /**
+   * Deserialize binary data to message
+   * @param instance message instance
+   */
+  static deserializeBinary(bytes: ByteSource) {
+    const instance = new PositionRs();
+    PositionRs.deserializeBinaryFromReader(instance, new BinaryReader(bytes));
+    return instance;
+  }
+
+  /**
+   * Check all the properties and set default protobuf values if necessary
+   * @param _instance message instance
+   */
+  static refineValues(_instance: PositionRs) {
+    _instance.latitude = _instance.latitude || 0;
+    _instance.longitude = _instance.longitude || 0;
+  }
+
+  /**
+   * Deserializes / reads binary message into message instance using provided binary reader
+   * @param _instance message instance
+   * @param _reader binary reader instance
+   */
+  static deserializeBinaryFromReader(
+    _instance: PositionRs,
+    _reader: BinaryReader
+  ) {
+    while (_reader.nextField()) {
+      if (_reader.isEndGroup()) break;
+
+      switch (_reader.getFieldNumber()) {
+        case 1:
+          _instance.latitude = _reader.readDouble();
+          break;
+        case 2:
+          _instance.longitude = _reader.readDouble();
+          break;
+        default:
+          _reader.skipField();
+      }
+    }
+
+    PositionRs.refineValues(_instance);
+  }
+
+  /**
+   * Serializes a message to binary format using provided binary reader
+   * @param _instance message instance
+   * @param _writer binary writer instance
+   */
+  static serializeBinaryToWriter(_instance: PositionRs, _writer: BinaryWriter) {
+    if (_instance.latitude) {
+      _writer.writeDouble(1, _instance.latitude);
+    }
+    if (_instance.longitude) {
+      _writer.writeDouble(2, _instance.longitude);
+    }
+  }
+
+  private _latitude?: number;
+  private _longitude?: number;
+
+  /**
+   * Message constructor. Initializes the properties and applies default Protobuf values if necessary
+   * @param _value initial values object or instance of PositionRs to deeply clone from
+   */
+  constructor(_value?: RecursivePartial<PositionRs.AsObject>) {
+    _value = _value || {};
+    this.latitude = _value.latitude;
+    this.longitude = _value.longitude;
+    PositionRs.refineValues(this);
+  }
+  get latitude(): number | undefined {
+    return this._latitude;
+  }
+  set latitude(value: number | undefined) {
+    this._latitude = value;
+  }
+  get longitude(): number | undefined {
+    return this._longitude;
+  }
+  set longitude(value: number | undefined) {
+    this._longitude = value;
+  }
+
+  /**
+   * Serialize message to binary data
+   * @param instance message instance
+   */
+  serializeBinary() {
+    const writer = new BinaryWriter();
+    PositionRs.serializeBinaryToWriter(this, writer);
+    return writer.getResultBuffer();
+  }
+
+  /**
+   * Cast message to standard JavaScript object (all non-primitive values are deeply cloned)
+   */
+  toObject(): PositionRs.AsObject {
+    return {
+      latitude: this.latitude,
+      longitude: this.longitude
+    };
+  }
+
+  /**
+   * Convenience method to support JSON.stringify(message), replicates the structure of toObject()
+   */
+  toJSON() {
+    return this.toObject();
+  }
+
+  /**
+   * Cast message to JSON using protobuf JSON notation: https://developers.google.com/protocol-buffers/docs/proto3#json
+   * Attention: output differs from toObject() e.g. enums are represented as names and not as numbers, Timestamp is an ISO Date string format etc.
+   * If the message itself or some of descendant messages is google.protobuf.Any, you MUST provide a message pool as options. If not, the messagePool is not required
+   */
+  toProtobufJSON(
+    // @ts-ignore
+    options?: ToProtobufJSONOptions
+  ): PositionRs.AsProtobufJSON {
+    return {
+      latitude: this.latitude,
+      longitude: this.longitude
+    };
+  }
+}
+export module PositionRs {
+  /**
+   * Standard JavaScript object representation for PositionRs
+   */
+  export interface AsObject {
+    latitude?: number;
+    longitude?: number;
+  }
+
+  /**
+   * Protobuf JSON representation for PositionRs
+   */
+  export interface AsProtobufJSON {
+    latitude?: number;
+    longitude?: number;
+  }
+}

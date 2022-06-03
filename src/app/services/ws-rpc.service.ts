@@ -4,7 +4,7 @@ import {WsRPCClient} from "../wsrpc/WsRPCClient";
 @Injectable({
   providedIn: 'root'
 })
-export class WsrpcServiceService extends WsRPCClient {
+export class WsRpcService extends WsRPCClient {
 
   constructor() {
     super();

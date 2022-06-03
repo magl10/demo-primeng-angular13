@@ -1,0 +1,10 @@
+<div id="parent">
+  <h5 #statsTitle>WSRPC STATS</h5>
+  <p>Method: <span class="code-monospaced-text">{{lastCall}}</span></p>
+  <p>Recv. Obj. Count: <span class="code-monospaced-text">{{rcvObjectCount}}</span></p>
+  <p>First Obj. Recv.: <span class="code-monospaced-text">{{firstObj}}</span></p>
+  <p>Object Recv. Avg.: <span class="code-monospaced-text">{{objRecvAvg}}</span></p>
+  <p>Binary to Object Avg.: <span class="code-monospaced-text">{{binToObjAvg}}</span></p>
+  <p>Total Time: <span class="code-monospaced-text">{{operationTime}}</span></p>
+  <p-progressBar [value]="pBarProgress" [mode]="pBarMode" [style]="{height: '5px'}"></p-progressBar>
+</div>

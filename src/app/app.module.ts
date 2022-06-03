@@ -14,23 +14,29 @@ import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import { WsrpcDemoComponent } from './components/wsrpc-demo/wsrpc-demo.component';
 import {TableModule} from "primeng/table";
+import {InputTextModule} from "primeng/inputtext";
+import {FormsModule} from "@angular/forms";
+import {WebsocketRpcStatsComponent} from "./components/websocket-rpc-stats/websocket-rpc-stats.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EjemploProgressbarComponent,
-    WsrpcDemoComponent
+    WsrpcDemoComponent,
+    WebsocketRpcStatsComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        ButtonModule,
-        ProgressBarModule,
-        ToastModule,
-        TableModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    ButtonModule,
+    ProgressBarModule,
+    ToastModule,
+    TableModule,
+    InputTextModule,
+    FormsModule
+  ],
   providers: [
     MessageService
   ],

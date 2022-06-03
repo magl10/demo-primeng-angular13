@@ -117,6 +117,27 @@ export class UserServiceClient {
         requestClass: thisProto.EmptyRq,
         responseClass: thisProto.ListUsersResponse
       });
+    },
+    /**
+     * Server streaming: /user.UserService/OnReceivedLocationDriver
+     *
+     * @param requestMessage Request message
+     * @param requestMetadata Request metadata
+     * @returns Observable<GrpcEvent<thisProto.PositionRs>>
+     */
+    onReceivedLocationDriver: (
+      requestData: thisProto.GetPositionDriverRq,
+      requestMetadata = new GrpcMetadata()
+    ): Observable<GrpcEvent<thisProto.PositionRs>> => {
+      return this.handler.handle({
+        type: GrpcCallType.serverStream,
+        client: this.client,
+        path: '/user.UserService/OnReceivedLocationDriver',
+        requestData,
+        requestMetadata,
+        requestClass: thisProto.GetPositionDriverRq,
+        responseClass: thisProto.PositionRs
+      });
     }
   };
 
@@ -189,6 +210,22 @@ export class UserServiceClient {
   ): Observable<thisProto.ListUsersResponse> {
     return this.$raw
       .getAllUser(requestData, requestMetadata)
+      .pipe(throwStatusErrors(), takeMessages());
+  }
+
+  /**
+   * Server streaming @/user.UserService/OnReceivedLocationDriver
+   *
+   * @param requestMessage Request message
+   * @param requestMetadata Request metadata
+   * @returns Observable<thisProto.PositionRs>
+   */
+  onReceivedLocationDriver(
+    requestData: thisProto.GetPositionDriverRq,
+    requestMetadata = new GrpcMetadata()
+  ): Observable<thisProto.PositionRs> {
+    return this.$raw
+      .onReceivedLocationDriver(requestData, requestMetadata)
       .pipe(throwStatusErrors(), takeMessages());
   }
 }

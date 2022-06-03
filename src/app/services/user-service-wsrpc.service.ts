@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {WsrpcServiceService} from "./wsrpc-service.service";
-import {ListUsersResponse} from "../../proto/user.pb";
+import {WsRpcService} from "./ws-rpc.service";
+import {GetPositionDriverRq, ListUsersResponse, PositionRs, UserRq, UserRs} from "../../proto/user.pb";
 import {Subject} from "rxjs";
 
 @Injectable({
@@ -9,7 +9,7 @@ import {Subject} from "rxjs";
 export class UserServiceWsrpcService {
 
   constructor(
-    private wsRpcService: WsrpcServiceService
+    private wsRpcService: WsRpcService
   ) { }
 
   getAllUsers(
@@ -25,6 +25,42 @@ export class UserServiceWsrpcService {
       error: err => replySubject.error(err),
       complete: () => replySubject.complete()
     });
+    return replySubject;
+  }
+
+  createUser(
+    baseUrl: string,
+    request: UserRq
+  ) : Subject<UserRs> {
+    const replySubject = new Subject<UserRs>();
+    this.wsRpcService.singleRequest(
+      baseUrl,
+      "/UserService/CreateUser",
+      request.serializeBinary()
+    ).subscribe({
+      next: value => replySubject.next(UserRs.deserializeBinary(value)),
+      error: err => replySubject.error(err),
+      complete: () => replySubject.complete()
+    });
+    return replySubject;
+  }
+
+  onReceivedLocationDriver(
+    baseUrl: string,
+    request: GetPositionDriverRq
+  ) : Subject<PositionRs> {
+    const replySubject = new Subject<PositionRs>();
+
+    this.wsRpcService.singleRequest(
+      baseUrl,
+      "/UserService/OnReceivedLocationDriver",
+      request.serializeBinary()
+    ).subscribe({
+      next: value => replySubject.next(PositionRs.deserializeBinary(value)),
+      error: err => replySubject.error(err),
+      complete: () => replySubject.complete()
+    });
+
     return replySubject;
   }
 

@@ -14,6 +14,7 @@ export class WsRPCClient {
     method: string,
     payload: Uint8Array
   ) : Subject<ArrayBuffer> {
+    this.statsObj.reset();
     this.statsObj.method = method;
     this.stats.next(this.statsObj);
 
@@ -69,7 +70,8 @@ export class WsRPCClient {
 
   // Client Side Streaming
   public streamingRequest(
-    url: string,
+    baseUrl: string,
+    method: string,
     stream: Subject<Uint8Array>
   ) : Subject<ArrayBuffer> {
     this.statsObj.reset();
@@ -77,7 +79,7 @@ export class WsRPCClient {
 
     const start = performance.now();
 
-    let ws = new WebSocket(url);
+    let ws = new WebSocket(baseUrl + method);
     ws.binaryType = 'arraybuffer';
     let subj = new Subject<ArrayBuffer>();
     ws.onopen = ev => {
