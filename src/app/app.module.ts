@@ -17,6 +17,8 @@ import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
 import {FormsModule} from "@angular/forms";
 import {WebsocketRpcStatsComponent} from "./components/websocket-rpc-stats/websocket-rpc-stats.component";
+import {RatingModule} from 'primeng/rating';
+import { ListDriverComponent } from './components/list-driver/list-driver.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {WebsocketRpcStatsComponent} from "./components/websocket-rpc-stats/webso
     HomeComponent,
     EjemploProgressbarComponent,
     WsrpcDemoComponent,
-    WebsocketRpcStatsComponent
+    WebsocketRpcStatsComponent,
+    ListDriverComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import {WebsocketRpcStatsComponent} from "./components/websocket-rpc-stats/webso
     ToastModule,
     TableModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    RatingModule
   ],
   providers: [
     MessageService

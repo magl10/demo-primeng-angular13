@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EjemploProgressbarComponent } from './components/ejemplo-progressbar/ejemplo-progressbar.component';
 import { HomeComponent } from './components/home/home.component';
 import {WsrpcDemoComponent} from "./components/wsrpc-demo/wsrpc-demo.component";
+import { ListDriverComponent } from "./components/list-driver/list-driver.component";
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'wsrpc-demo', component: WsrpcDemoComponent
+  },
+  {
+    path: 'driver', component: ListDriverComponent
   }
 ];
 
