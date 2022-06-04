@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'ejemplo-progressbar', component: EjemploProgressbarComponent
   },
   {
-    path: 'wsrpc-demo', component: WsrpcDemoComponent
+    path: 'wsrpc-demo', component: WsrpcDemoComponent 
   },
   {
     path: 'driver', component: ListDriverComponent
