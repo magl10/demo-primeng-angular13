@@ -19,6 +19,7 @@ import {FormsModule} from "@angular/forms";
 import {WebsocketRpcStatsComponent} from "./components/websocket-rpc-stats/websocket-rpc-stats.component";
 import {RatingModule} from 'primeng/rating';
 import { ListDriverComponent } from './components/list-driver/list-driver.component';
+import { DiverFormComponent } from './components/divers/diver-form/diver-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListDriverComponent } from './components/list-driver/list-driver.compon
     EjemploProgressbarComponent,
     WsrpcDemoComponent,
     WebsocketRpcStatsComponent,
-    ListDriverComponent
+    ListDriverComponent,
+    DiverFormComponent
   ],
   imports: [
     BrowserModule,
