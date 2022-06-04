@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diver-form',
@@ -7,28 +7,19 @@ import { CanActivate, Router } from '@angular/router';
   styleUrls: ['./diver-form.component.scss']
 })
 
-@Injectable()
-export class DiverFormComponent implements CanActivate {
+
+export class DiverFormComponent implements OnInit {
 
   constructor(private router: Router) { }
   
 
-  canActivate(): boolean {
-    let currentUser:boolean= true;//string = JSON.parse(localStorage.getItem());
-    
-    if (currentUser) {
-      return true;
-    } else {
-      this.router.navigate(['/login/login']);
-      return false;
-    }
-  }
 
   ngOnInit(): void {
 
   }
 
   registrar():any{
+    this.router.navigate(['/driver']);
 
   }
 
