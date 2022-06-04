@@ -7,7 +7,7 @@ import { ListDriverComponent } from "./components/list-driver/list-driver.compon
 import { DiverFormComponent } from "./components/divers/diver-form/diver-form.component";
 const routes: Routes = [
   {
-    path: '/home', component: HomeComponent
+    path: 'home', component: HomeComponent
   },
   {
     path: 'ejemplo-progressbar', component: EjemploProgressbarComponent
