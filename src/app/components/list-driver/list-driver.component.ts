@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DrivertServiceWsrpcService} from '../../services/drivert-service-wsrpc.service';
-import { DrivertRs, DrivertRq} from "../../../proto/drivert.pb";
+import { DrivertRs, DrivertRq, DrivertUpdateRq} from "../../../proto/drivert.pb";
 
 @Component({
   selector: 'app-list-driver',
@@ -45,8 +45,47 @@ export class ListDriverComponent implements OnInit {
     );
  
   }
+  editarActivarEstado(drivert:any){
+    this.updateDrivert(drivert,true);
+  }
+  editarDesactivarEstado(drivert:any){
+    this.updateDrivert(drivert,false);
+  }
+  updateDrivert(drivert:any,estado:boolean) {
+    const request = new DrivertUpdateRq(
+      {
+        id: drivert.id,
+        name: drivert.name,
+        lastname: drivert.lastname,
+        dni: drivert.dni,
+        placa: drivert.placa,
+        marca: drivert.marca,
+        status: estado,
+
+        
+      }
+    );
+    this.drivers.updateDrivert(
+      this.host,
+      request
+    ).subscribe(
+      {
+        next: value => {
+          console.log("Se modifico el estado", value);
+        },
+        complete: () => {
+          console.log("Se completo el request.");
+          
+        },
+        error:(e)=>{
+          console.log("mi erro es : "+ e.message)
+        }
+      }
+    )
+  }
 
 
+  
 }
 
 /*

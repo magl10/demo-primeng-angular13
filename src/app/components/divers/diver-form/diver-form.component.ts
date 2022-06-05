@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DrivertServiceWsrpcService } from 'src/app/services/drivert-service-wsrpc.service';
 import { WsRpcService } from 'src/app/services/ws-rpc.service';
-import { DrivertRq } from 'src/proto/drivert.pb';
+import { DrivertRq, DrivertUpdateRq } from 'src/proto/drivert.pb';
 
 @Component({
   selector: 'app-diver-form',
@@ -31,6 +31,7 @@ export class DiverFormComponent implements OnInit {
     this.createDrivert();
 
   }
+  id ="drivert/9008947809";
   name = "";
   lastname = "";
   dni = "";
@@ -51,6 +52,39 @@ export class DiverFormComponent implements OnInit {
       }
     );
     this.drivertService.createDrivert(
+      this.host,
+      request
+    ).subscribe(
+      {
+        next: value => {
+          console.log("Se creó usuario", value);
+        },
+        complete: () => {
+          console.log("Se completo el request.");
+          
+        },
+        error:(e)=>{
+          console.log("mi erro es : "+ e.message)
+        }
+      }
+    )
+  }
+
+  updateDrivert() {
+    const request = new DrivertUpdateRq(
+      {
+        id: this.id,
+        name: this.name,
+        lastname: this.lastname,
+        dni: this.dni,
+        placa: this.placa,
+        marca: this.marca,
+        status: false,
+
+        
+      }
+    );
+    this.drivertService.updateDrivert(
       this.host,
       request
     ).subscribe(

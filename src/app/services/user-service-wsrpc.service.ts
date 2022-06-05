@@ -44,7 +44,22 @@ export class UserServiceWsrpcService {
     });
     return replySubject;
   }
-
+  updateUser(
+    baseUrl: string,
+    request: UserRq
+  ) : Subject<UserRs> {
+    const replySubject = new Subject<UserRs>();
+    this.wsRpcService.singleRequest(
+      baseUrl,
+      "/UserService/UpdateUser",
+      request.serializeBinary()
+    ).subscribe({
+      next: value => replySubject.next(UserRs.deserializeBinary(value)),
+      error: err => replySubject.error(err),
+      complete: () => replySubject.complete()
+    });
+    return replySubject;
+  }
   onReceivedLocationDriver(
     baseUrl: string,
     request: GetPositionDriverRq

@@ -27,8 +27,8 @@
 
                     <td>
                         <span>{{driver.status}}</span>
-                        <button pButton pRipple type="button" label="Descartar" class="p-button-danger p-button-text"></button>
-                        <button pButton pRipple type="button" label="Aceptar" class="p-button-success p-button-text"></button>
+                        <button pButton pRipple type="button" label="Activar" (click)="editarActivarEstado(driver)" class="p-button-danger p-button-text"></button>
+                        <button pButton pRipple type="button" label="Desactivar" (click)="editarDesactivarEstado(driver)" class="p-button-success p-button-text"></button>
                     </td>
                 </tr>
             </ng-template>

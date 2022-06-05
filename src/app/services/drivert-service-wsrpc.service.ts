@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { DrivertRq, DrivertRs, ListDrivertsResponse } from 'src/proto/drivert.pb';
+import { DrivertRq, DrivertRs, DrivertUpdateRq, ListDrivertsResponse } from 'src/proto/drivert.pb';
 import { WsRpcService } from './ws-rpc.service';
 
 @Injectable({
@@ -36,6 +36,23 @@ export class DrivertServiceWsrpcService {
     this.wsRpcService.singleRequest(
       baseUrl,
       "/DrivertService/createDrivert",
+      request.serializeBinary()
+    ).subscribe({
+      next: value => replySubject.next(DrivertRs.deserializeBinary(value)),
+      error: err => replySubject.error(err),
+      complete: () => replySubject.complete()
+    });
+    return replySubject;
+  }
+
+  updateDrivert(
+    baseUrl: string,
+    request: DrivertUpdateRq
+  ) : Subject<DrivertRs> {
+    const replySubject = new Subject<DrivertRs>();
+    this.wsRpcService.singleRequest(
+      baseUrl,
+      "/DrivertService/UpdateDrivert",
       request.serializeBinary()
     ).subscribe({
       next: value => replySubject.next(DrivertRs.deserializeBinary(value)),
