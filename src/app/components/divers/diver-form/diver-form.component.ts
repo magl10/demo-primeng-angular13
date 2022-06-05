@@ -14,13 +14,12 @@ import { DrivertRq } from 'src/proto/drivert.pb';
 
 export class DiverFormComponent implements OnInit {
   host = "ws://localhost:8080";
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private drivertService: DrivertServiceWsrpcService,
     private wsRpcService: WsRpcService,
     private messageService: MessageService) { }
   
-
-
   ngOnInit(): void {
 
   }
