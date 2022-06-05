@@ -3,34 +3,34 @@
     <div class="col-12 md:col-4">
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-            <input type="text" pInputText placeholder="Nombre">
+            <input type="text"[(ngModel)]="name"  pInputText placeholder="Nombre" name="name">
         </div>
     </div>
     <div class="col-12 md:col-4">
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-            <input type="text" pInputText placeholder="Lastname">
+            <input type="text" [(ngModel)]="lastname" pInputText placeholder="Lastname" name="lastname">
         </div>
     </div>
     <div class="col-12 md:col-4">
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-            <input type="text" pInputText placeholder="Dni">
+            <input type="text" [(ngModel)]="dni" pInputText placeholder="Dni" name="dni">
         </div>
     </div>
     <div class="col-12 md:col-4">
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-            <input type="text" pInputText placeholder="Placa">
+            <input type="text" [(ngModel)]="placa" pInputText placeholder="Placa" name="placa">
         </div>
     </div>
     <div class="col-12 md:col-4">
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-            <input type="text" pInputText placeholder="Marca">
+            <input type="text" [(ngModel)]="marca" pInputText placeholder="Marca" name="marca">
         </div>
     </div>
     <div class="col-12 md:col-4">
-        <button pButton type="button" label="Registrarme" (click)="registrar()" ></button>
+        <button ngDefaultControl pButton type="button" [(ngModel)]="name" label="Registrarme" (click)="registrar()" ></button>
     </div>
 </div>

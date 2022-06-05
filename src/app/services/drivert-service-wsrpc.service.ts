@@ -15,7 +15,11 @@ export class DrivertServiceWsrpcService {
     const replySubject = new Subject<ListDrivertsResponse>();
     this.wsRpcService.singleRequest(
       baseUrl,
+<<<<<<< HEAD
       "/DrivertService/getAllDrivert",
+=======
+      "/Drivertservice/getAllDrivert",
+>>>>>>> 5f686e806fcaab7906632aa0b0a2c176d4fa56a3
       new Uint8Array(0)
     ).subscribe({
       next: value => replySubject.next(ListDrivertsResponse.deserializeBinary(value)),

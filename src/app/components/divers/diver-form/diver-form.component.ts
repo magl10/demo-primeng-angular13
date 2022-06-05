@@ -1,5 +1,9 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { DrivertServiceWsrpcService } from 'src/app/services/drivert-service-wsrpc.service';
+import { WsRpcService } from 'src/app/services/ws-rpc.service';
+import { DrivertRq } from 'src/proto/drivert.pb';
 
 @Component({
   selector: 'app-diver-form',
@@ -9,8 +13,11 @@ import { Router } from '@angular/router';
 
 
 export class DiverFormComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  host = "ws://localhost:8080";
+  constructor(private router: Router,
+    private drivertService: DrivertServiceWsrpcService,
+    private wsRpcService: WsRpcService,
+    private messageService: MessageService) { }
   
 
 
@@ -19,8 +26,48 @@ export class DiverFormComponent implements OnInit {
   }
 
   registrar():any{
-    this.router.navigate(['/driver']);
+    
+    // this.router.navigate(['/driver']);
+    this.createDrivert();
 
   }
+  name = "";
+  lastname = "";
+  dni = "";
+  placa = "";
+  marca = "";
+  status: "";
+  createDrivert() {
+    const request = new DrivertRq(
+      {
+        name: this.name,
+        lastname: this.lastname,
+        dni: this.dni,
+        placa: this.placa,
+        marca: this.marca,
+        status: false,
 
+        
+      }
+    );
+    this.drivertService.createDrivert(
+      this.host,
+      request
+    ).subscribe(
+      {
+        next: value => {
+          console.log("Se creó usuario", value);
+        },
+        complete: () => {
+          console.log("Se completo el request.");
+          
+        },
+        error:(e)=>{
+          console.log("mi erro es : "+ e)
+        }
+      }
+    )
+  }
+
+  
 }
