@@ -32,7 +32,7 @@ export class DrivertServiceWsrpcService {
     const replySubject = new Subject<DrivertRs>();
     this.wsRpcService.singleRequest(
       baseUrl,
-      "/Drivertservice/CreateUser",
+      "/DrivertService/createDrivert",
       request.serializeBinary()
     ).subscribe({
       next: value => replySubject.next(DrivertRs.deserializeBinary(value)),
