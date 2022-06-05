@@ -9,7 +9,7 @@ import { DrivertRs, DrivertRq} from "../../../proto/drivert.pb";
 })
 export class ListDriverComponent implements OnInit {
   
-  host = "ws://localhost:8080";
+  host = "ws://localhost:4200";
   
   tableObjects : DrivertRs[]=[];
 
