@@ -9,7 +9,7 @@ import { DrivertRs, DrivertRq} from "../../../proto/drivert.pb";
 })
 export class ListDriverComponent implements OnInit {
   
-  host = "ws://localhost:4200";
+  host = "ws://localhost:8080";
   
   tableObjects : DrivertRs[]=[];
 
@@ -23,6 +23,10 @@ export class ListDriverComponent implements OnInit {
 
   ngOnInit(): void {
     //this.listar();
+    // this.getListDriver();
+  }
+
+  mostrar(){
     this.getListDriver();
   }
   getListDriver() {

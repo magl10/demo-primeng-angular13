@@ -27,7 +27,8 @@ export class DiverFormComponent implements OnInit {
 
   registrar():any{
     
-    this.router.navigate(['/driver']);
+    // this.router.navigate(['/driver']);
+    this.createDrivert();
 
   }
   name = "";
@@ -36,7 +37,7 @@ export class DiverFormComponent implements OnInit {
   placa = "";
   marca = "";
   status: "";
-  crearDrivert() {
+  createDrivert() {
     const request = new DrivertRq(
       {
         name: this.name,
@@ -60,6 +61,9 @@ export class DiverFormComponent implements OnInit {
         complete: () => {
           console.log("Se completo el request.");
           
+        },
+        error:(e)=>{
+          console.log("mi erro es : "+ e)
         }
       }
     )
