@@ -82,6 +82,32 @@ export class WsrpcDemoComponent implements OnInit {
       }
     )
   }
+  // updateUsuario() {
+  //   const request = new UserRq(
+  //     {
+  //       name: this.nombre,
+  //       nickName: this.nickname,
+  //       address: this.direccion,
+  //       age: parseInt(this.edad),
+  //       active: true,
+  //       sex: this.sexo
+  //     }
+  //   );
+  //   this.userService.updateUsuario(
+  //     this.host,
+  //     request
+  //   ).subscribe(
+  //     {
+  //       next: value => {
+  //         console.log("Se creó usuario", value);
+  //       },
+  //       complete: () => {
+  //         console.log("Se completo el request.");
+  //         this.obtenerListaDeUsuario();
+  //       }
+  //     }
+  //   )
+  // }
 
   recibirUbicaciones() {
     const request = new GetPositionDriverRq({

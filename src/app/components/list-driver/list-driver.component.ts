@@ -24,10 +24,11 @@ export class ListDriverComponent implements OnInit {
   ngOnInit(): void {
     //this.listar();
     // this.getListDriver();
+    this.getListDriver();
   }
 
   mostrar(){
-    this.getListDriver();
+   
   }
   getListDriver() {
 

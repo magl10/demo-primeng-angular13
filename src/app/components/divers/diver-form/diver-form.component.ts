@@ -63,7 +63,7 @@ export class DiverFormComponent implements OnInit {
           
         },
         error:(e)=>{
-          console.log("mi erro es : "+ e)
+          console.log("mi erro es : "+ e.message)
         }
       }
     )
