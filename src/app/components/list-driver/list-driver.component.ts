@@ -12,9 +12,9 @@ export class ListDriverComponent implements OnInit {
   host = "ws://localhost:8080";
   
   tableObjects : DrivertRs[]=[];
-
+  loading = false;
   tableHeaders = [
-    "ID", "Nombre", "APELLIDO", "DNI", "PLACA", "MARCA", "ESTATUS"
+    "ID", "Nombre", "APELLIDO", "DNI", "PLACA", "MARCA", "SOLICITUD","Acciones"
   ];
   
   constructor(
@@ -24,6 +24,9 @@ export class ListDriverComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.loadDataDriverts();
+  }
+  loadDataDriverts(){
     this.drivers.getAllDriverts(this.host).subscribe(
       {
         next: value => {
@@ -36,12 +39,15 @@ export class ListDriverComponent implements OnInit {
       }
     );
   }
-
   editarActivarEstado(drivert:any){
+    
     this.updateDrivert(drivert,true);
+    
   }
   editarDesactivarEstado(drivert:any){
+   
     this.updateDrivert(drivert,false);
+    
   }
   updateDrivert(drivert:any,estado:boolean) {
     const request = new DrivertUpdateRq(
@@ -67,6 +73,7 @@ export class ListDriverComponent implements OnInit {
         },
         complete: () => {
           console.log("Se completo el request.");
+          this.loadDataDriverts();
           
         },
         error:(e)=>{

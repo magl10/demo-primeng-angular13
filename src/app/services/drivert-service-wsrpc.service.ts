@@ -48,7 +48,7 @@ export class DrivertServiceWsrpcService {
     const replySubject = new Subject<DrivertRs>();
     this.wsRpcService.singleRequest(
       baseUrl,
-      "/DrivertService/UpdateDrivert",
+      "/DrivertService/updateDrivert",
       request.serializeBinary()
     ).subscribe({
       next: value => replySubject.next(DrivertRs.deserializeBinary(value)),
