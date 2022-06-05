@@ -1165,6 +1165,33 @@ export class ListDrivertsResponse implements GrpcMessage {
 
       switch (_reader.getFieldNumber()) {
         case 1:
+          const messageInitializer1 = new DrivertRs();
+          _reader.readMessage(
+            messageInitializer1,
+            DrivertRs.deserializeBinaryFromReader
+          );
+          (_instance.driverts = _instance.driverts || []).push(
+            messageInitializer1
+          );
+          break;
+        default:
+          _reader.skipField();
+      }
+    }
+
+    ListDrivertsResponse.refineValues(_instance);
+  }
+
+  /*
+  static deserializeBinaryFromReader(
+    _instance: ListDrivertsResponse,
+    _reader: BinaryReader
+  ) {
+    while (_reader.nextField()) {
+      if (_reader.isEndGroup()) break;
+
+      switch (_reader.getFieldNumber()) {
+        case 1:
           const messageInitializer1 = new Drivert.DrivertRs();
           _reader.readMessage(
             messageInitializer1,
@@ -1181,6 +1208,7 @@ export class ListDrivertsResponse implements GrpcMessage {
 
     ListDrivertsResponse.refineValues(_instance);
   }
+  */
 
   /**
    * Serializes a message to binary format using provided binary reader

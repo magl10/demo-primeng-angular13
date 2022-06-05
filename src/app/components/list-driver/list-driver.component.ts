@@ -15,23 +15,15 @@ export class ListDriverComponent implements OnInit {
 
   tableHeaders = [
     "ID", "Nombre", "APELLIDO", "DNI", "PLACA", "MARCA", "ESTATUS"
-  ]
+  ];
   
   constructor(
     private drivers: DrivertServiceWsrpcService
-  ) { }
+  ) {
+  
+   }
 
   ngOnInit(): void {
-    //this.listar();
-    // this.getListDriver();
-    this.getListDriver();
-  }
-
-  mostrar(){
-   
-  }
-  getListDriver() {
-
     this.drivers.getAllDriverts(this.host).subscribe(
       {
         next: value => {
@@ -43,8 +35,8 @@ export class ListDriverComponent implements OnInit {
         }
       }
     );
- 
   }
+
   editarActivarEstado(drivert:any){
     this.updateDrivert(drivert,true);
   }
