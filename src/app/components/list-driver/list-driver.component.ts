@@ -23,7 +23,18 @@ export class ListDriverComponent implements OnInit {
 
   ngOnInit(): void {
     //this.listar();
-    this.getListDriver();
+    //this.getListDriver();
+    this.drivers.getAllDriverts(this.host).subscribe(
+      {
+        next: value => {
+            const driveRs = value.driverts as DrivertRs[];
+            this.tableObjects = driveRs;
+        },
+        complete: () => {
+          console.log("Se completo el request.")
+        }
+      }
+    );
   }
   getListDriver() {
 
