@@ -33,8 +33,11 @@ export class DrivertRq implements GrpcMessage {
    */
   static refineValues(_instance: DrivertRq) {
     _instance.name = _instance.name || '';
+    _instance.lastname = _instance.lastname || '';
     _instance.dni = _instance.dni || '';
-    _instance.status = _instance.status || '';
+    _instance.placa = _instance.placa || '';
+    _instance.marca = _instance.marca || '';
+    _instance.status = _instance.status || false;
   }
 
   /**
@@ -54,10 +57,19 @@ export class DrivertRq implements GrpcMessage {
           _instance.name = _reader.readString();
           break;
         case 2:
-          _instance.dni = _reader.readString();
+          _instance.lastname = _reader.readString();
           break;
         case 3:
-          _instance.status = _reader.readString();
+          _instance.dni = _reader.readString();
+          break;
+        case 4:
+          _instance.placa = _reader.readString();
+          break;
+        case 5:
+          _instance.marca = _reader.readString();
+          break;
+        case 6:
+          _instance.status = _reader.readBool();
           break;
         default:
           _reader.skipField();
@@ -76,17 +88,29 @@ export class DrivertRq implements GrpcMessage {
     if (_instance.name) {
       _writer.writeString(1, _instance.name);
     }
+    if (_instance.lastname) {
+      _writer.writeString(2, _instance.lastname);
+    }
     if (_instance.dni) {
-      _writer.writeString(2, _instance.dni);
+      _writer.writeString(3, _instance.dni);
+    }
+    if (_instance.placa) {
+      _writer.writeString(4, _instance.placa);
+    }
+    if (_instance.marca) {
+      _writer.writeString(5, _instance.marca);
     }
     if (_instance.status) {
-      _writer.writeString(3, _instance.status);
+      _writer.writeBool(6, _instance.status);
     }
   }
 
   private _name?: string;
+  private _lastname?: string;
   private _dni?: string;
-  private _status?: string;
+  private _placa?: string;
+  private _marca?: string;
+  private _status?: boolean;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -95,7 +119,10 @@ export class DrivertRq implements GrpcMessage {
   constructor(_value?: RecursivePartial<DrivertRq.AsObject>) {
     _value = _value || {};
     this.name = _value.name;
+    this.lastname = _value.lastname;
     this.dni = _value.dni;
+    this.placa = _value.placa;
+    this.marca = _value.marca;
     this.status = _value.status;
     DrivertRq.refineValues(this);
   }
@@ -105,16 +132,34 @@ export class DrivertRq implements GrpcMessage {
   set name(value: string | undefined) {
     this._name = value;
   }
+  get lastname(): string | undefined {
+    return this._lastname;
+  }
+  set lastname(value: string | undefined) {
+    this._lastname = value;
+  }
   get dni(): string | undefined {
     return this._dni;
   }
   set dni(value: string | undefined) {
     this._dni = value;
   }
-  get status(): string | undefined {
+  get placa(): string | undefined {
+    return this._placa;
+  }
+  set placa(value: string | undefined) {
+    this._placa = value;
+  }
+  get marca(): string | undefined {
+    return this._marca;
+  }
+  set marca(value: string | undefined) {
+    this._marca = value;
+  }
+  get status(): boolean | undefined {
     return this._status;
   }
-  set status(value: string | undefined) {
+  set status(value: boolean | undefined) {
     this._status = value;
   }
 
@@ -134,7 +179,10 @@ export class DrivertRq implements GrpcMessage {
   toObject(): DrivertRq.AsObject {
     return {
       name: this.name,
+      lastname: this.lastname,
       dni: this.dni,
+      placa: this.placa,
+      marca: this.marca,
       status: this.status
     };
   }
@@ -157,7 +205,10 @@ export class DrivertRq implements GrpcMessage {
   ): DrivertRq.AsProtobufJSON {
     return {
       name: this.name,
+      lastname: this.lastname,
       dni: this.dni,
+      placa: this.placa,
+      marca: this.marca,
       status: this.status
     };
   }
@@ -168,8 +219,11 @@ export module DrivertRq {
    */
   export interface AsObject {
     name?: string;
+    lastname?: string;
     dni?: string;
-    status?: string;
+    placa?: string;
+    marca?: string;
+    status?: boolean;
   }
 
   /**
@@ -177,8 +231,11 @@ export module DrivertRq {
    */
   export interface AsProtobufJSON {
     name?: string;
+    lastname?: string;
     dni?: string;
-    status?: string;
+    placa?: string;
+    marca?: string;
+    status?: boolean;
   }
 }
 
@@ -205,8 +262,11 @@ export class DrivertRs implements GrpcMessage {
   static refineValues(_instance: DrivertRs) {
     _instance.id = _instance.id || '';
     _instance.name = _instance.name || '';
+    _instance.lastname = _instance.lastname || '';
     _instance.dni = _instance.dni || '';
-    _instance.status = _instance.status || '';
+    _instance.placa = _instance.placa || '';
+    _instance.marca = _instance.marca || '';
+    _instance.status = _instance.status || false;
   }
 
   /**
@@ -229,10 +289,19 @@ export class DrivertRs implements GrpcMessage {
           _instance.name = _reader.readString();
           break;
         case 3:
-          _instance.dni = _reader.readString();
+          _instance.lastname = _reader.readString();
           break;
         case 4:
-          _instance.status = _reader.readString();
+          _instance.dni = _reader.readString();
+          break;
+        case 5:
+          _instance.placa = _reader.readString();
+          break;
+        case 6:
+          _instance.marca = _reader.readString();
+          break;
+        case 7:
+          _instance.status = _reader.readBool();
           break;
         default:
           _reader.skipField();
@@ -254,18 +323,30 @@ export class DrivertRs implements GrpcMessage {
     if (_instance.name) {
       _writer.writeString(2, _instance.name);
     }
+    if (_instance.lastname) {
+      _writer.writeString(3, _instance.lastname);
+    }
     if (_instance.dni) {
-      _writer.writeString(3, _instance.dni);
+      _writer.writeString(4, _instance.dni);
+    }
+    if (_instance.placa) {
+      _writer.writeString(5, _instance.placa);
+    }
+    if (_instance.marca) {
+      _writer.writeString(6, _instance.marca);
     }
     if (_instance.status) {
-      _writer.writeString(4, _instance.status);
+      _writer.writeBool(7, _instance.status);
     }
   }
 
   private _id?: string;
   private _name?: string;
+  private _lastname?: string;
   private _dni?: string;
-  private _status?: string;
+  private _placa?: string;
+  private _marca?: string;
+  private _status?: boolean;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -275,7 +356,10 @@ export class DrivertRs implements GrpcMessage {
     _value = _value || {};
     this.id = _value.id;
     this.name = _value.name;
+    this.lastname = _value.lastname;
     this.dni = _value.dni;
+    this.placa = _value.placa;
+    this.marca = _value.marca;
     this.status = _value.status;
     DrivertRs.refineValues(this);
   }
@@ -291,16 +375,34 @@ export class DrivertRs implements GrpcMessage {
   set name(value: string | undefined) {
     this._name = value;
   }
+  get lastname(): string | undefined {
+    return this._lastname;
+  }
+  set lastname(value: string | undefined) {
+    this._lastname = value;
+  }
   get dni(): string | undefined {
     return this._dni;
   }
   set dni(value: string | undefined) {
     this._dni = value;
   }
-  get status(): string | undefined {
+  get placa(): string | undefined {
+    return this._placa;
+  }
+  set placa(value: string | undefined) {
+    this._placa = value;
+  }
+  get marca(): string | undefined {
+    return this._marca;
+  }
+  set marca(value: string | undefined) {
+    this._marca = value;
+  }
+  get status(): boolean | undefined {
     return this._status;
   }
-  set status(value: string | undefined) {
+  set status(value: boolean | undefined) {
     this._status = value;
   }
 
@@ -321,7 +423,10 @@ export class DrivertRs implements GrpcMessage {
     return {
       id: this.id,
       name: this.name,
+      lastname: this.lastname,
       dni: this.dni,
+      placa: this.placa,
+      marca: this.marca,
       status: this.status
     };
   }
@@ -345,7 +450,10 @@ export class DrivertRs implements GrpcMessage {
     return {
       id: this.id,
       name: this.name,
+      lastname: this.lastname,
       dni: this.dni,
+      placa: this.placa,
+      marca: this.marca,
       status: this.status
     };
   }
@@ -357,8 +465,11 @@ export module DrivertRs {
   export interface AsObject {
     id?: string;
     name?: string;
+    lastname?: string;
     dni?: string;
-    status?: string;
+    placa?: string;
+    marca?: string;
+    status?: boolean;
   }
 
   /**
@@ -367,8 +478,11 @@ export module DrivertRs {
   export interface AsProtobufJSON {
     id?: string;
     name?: string;
+    lastname?: string;
     dni?: string;
-    status?: string;
+    placa?: string;
+    marca?: string;
+    status?: boolean;
   }
 }
 
@@ -398,8 +512,11 @@ export class DrivertUpdateRq implements GrpcMessage {
   static refineValues(_instance: DrivertUpdateRq) {
     _instance.id = _instance.id || '';
     _instance.name = _instance.name || '';
+    _instance.lastname = _instance.lastname || '';
     _instance.dni = _instance.dni || '';
-    _instance.status = _instance.status || '';
+    _instance.placa = _instance.placa || '';
+    _instance.marca = _instance.marca || '';
+    _instance.status = _instance.status || false;
   }
 
   /**
@@ -422,10 +539,19 @@ export class DrivertUpdateRq implements GrpcMessage {
           _instance.name = _reader.readString();
           break;
         case 3:
-          _instance.dni = _reader.readString();
+          _instance.lastname = _reader.readString();
           break;
         case 4:
-          _instance.status = _reader.readString();
+          _instance.dni = _reader.readString();
+          break;
+        case 5:
+          _instance.placa = _reader.readString();
+          break;
+        case 6:
+          _instance.marca = _reader.readString();
+          break;
+        case 7:
+          _instance.status = _reader.readBool();
           break;
         default:
           _reader.skipField();
@@ -450,18 +576,30 @@ export class DrivertUpdateRq implements GrpcMessage {
     if (_instance.name) {
       _writer.writeString(2, _instance.name);
     }
+    if (_instance.lastname) {
+      _writer.writeString(3, _instance.lastname);
+    }
     if (_instance.dni) {
-      _writer.writeString(3, _instance.dni);
+      _writer.writeString(4, _instance.dni);
+    }
+    if (_instance.placa) {
+      _writer.writeString(5, _instance.placa);
+    }
+    if (_instance.marca) {
+      _writer.writeString(6, _instance.marca);
     }
     if (_instance.status) {
-      _writer.writeString(4, _instance.status);
+      _writer.writeBool(7, _instance.status);
     }
   }
 
   private _id?: string;
   private _name?: string;
+  private _lastname?: string;
   private _dni?: string;
-  private _status?: string;
+  private _placa?: string;
+  private _marca?: string;
+  private _status?: boolean;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -471,7 +609,10 @@ export class DrivertUpdateRq implements GrpcMessage {
     _value = _value || {};
     this.id = _value.id;
     this.name = _value.name;
+    this.lastname = _value.lastname;
     this.dni = _value.dni;
+    this.placa = _value.placa;
+    this.marca = _value.marca;
     this.status = _value.status;
     DrivertUpdateRq.refineValues(this);
   }
@@ -487,16 +628,34 @@ export class DrivertUpdateRq implements GrpcMessage {
   set name(value: string | undefined) {
     this._name = value;
   }
+  get lastname(): string | undefined {
+    return this._lastname;
+  }
+  set lastname(value: string | undefined) {
+    this._lastname = value;
+  }
   get dni(): string | undefined {
     return this._dni;
   }
   set dni(value: string | undefined) {
     this._dni = value;
   }
-  get status(): string | undefined {
+  get placa(): string | undefined {
+    return this._placa;
+  }
+  set placa(value: string | undefined) {
+    this._placa = value;
+  }
+  get marca(): string | undefined {
+    return this._marca;
+  }
+  set marca(value: string | undefined) {
+    this._marca = value;
+  }
+  get status(): boolean | undefined {
     return this._status;
   }
-  set status(value: string | undefined) {
+  set status(value: boolean | undefined) {
     this._status = value;
   }
 
@@ -517,7 +676,10 @@ export class DrivertUpdateRq implements GrpcMessage {
     return {
       id: this.id,
       name: this.name,
+      lastname: this.lastname,
       dni: this.dni,
+      placa: this.placa,
+      marca: this.marca,
       status: this.status
     };
   }
@@ -541,7 +703,10 @@ export class DrivertUpdateRq implements GrpcMessage {
     return {
       id: this.id,
       name: this.name,
+      lastname: this.lastname,
       dni: this.dni,
+      placa: this.placa,
+      marca: this.marca,
       status: this.status
     };
   }
@@ -553,8 +718,11 @@ export module DrivertUpdateRq {
   export interface AsObject {
     id?: string;
     name?: string;
+    lastname?: string;
     dni?: string;
-    status?: string;
+    placa?: string;
+    marca?: string;
+    status?: boolean;
   }
 
   /**
@@ -563,8 +731,11 @@ export module DrivertUpdateRq {
   export interface AsProtobufJSON {
     id?: string;
     name?: string;
+    lastname?: string;
     dni?: string;
-    status?: string;
+    placa?: string;
+    marca?: string;
+    status?: boolean;
   }
 }
 

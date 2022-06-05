@@ -14,7 +14,7 @@ export class ListDriverComponent implements OnInit {
   tableObjects : DrivertRs[]=[];
 
   tableHeaders = [
-    "ID", "Nombre", "DNI", "ESTATUS"
+    "ID", "Nombre", "APELLIDO", "DNI", "PLACA", "MARCA", "ESTATUS"
   ]
   
   constructor(
